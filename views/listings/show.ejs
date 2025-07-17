@@ -2,13 +2,13 @@
 
   <body>
     <div class="row">
-      <div class="col-6 offset-2">
+      <div class="col-md-6 offset-md-2 col-12 offset-0">
         <h3>
           <%= listing.title %>
         </h3>
       </div>
-      <div class="card col-6 offset-2" style="width: 50rem;">
-        <img src="<%= listing.image%>" class="card-img-top" alt="listing_image" style="height:20rem">
+      <div class="card col-md-6 offset-md-2 col-12 offset-0">
+        <img src="<%= listing.image%>" class="card-img-top" alt="listing_image">
         <div class="card-img-overlay"></div>
         <div class="card-body">
           <p class="card-text">
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div class="btns col-5 offset-2">
+      <div class="btns col-md-5 offset-md-2 col-12 offset-0">
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark">Edit this Listing</a>
         <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
           <button class="btn btn-danger">Delete this listing</button>
@@ -37,7 +37,7 @@
 
 
 
-      <div class="card col-6 offset-2">
+      <div class="card col-md-6 offset-md-2 col-12 offset-0">
         <hr>
         <h4>Leave a Review</h4>
         <form action="/listings/<%=listing._id %>/reviews" method="post" class="needs-validation" novalidate>
@@ -56,12 +56,12 @@
         </form>
       </div>
 
-      <div class="card col-6 offset-2">
+      <div class="card col-md-6 offset-md-2 col-12 offset-0">
         <hr>
         <h4>All reviews: </h4>
         <div class="row ">
         <% for(review of listing.reviews){ %>
-          <div class="card review-card col-5 ms-2 mb-3">
+          <div class="card review-card col-md-5 col-12 ms-md-2 mb-3">
             <div class="card-body">
               <h5 class="card-title">UserName</h5>
               <p class="card-text"><%=review.comment%></p>

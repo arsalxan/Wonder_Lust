@@ -78,3 +78,55 @@ body{
 .btns a,button{
     margin-right: 2rem;
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .info {
+        height: auto;
+        padding: 1rem 0;
+    }
+
+    .card {
+        width: 90%; /* Adjust card width for smaller screens */
+        margin: 0 auto 2rem auto; /* Center cards and add bottom margin */
+    }
+
+    .btns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btns a, button {
+        margin: 0.5rem 0;
+        width: 80%; /* Make buttons take more width */
+    }
+}
+
+@media (max-width: 576px) {
+    .row {
+        padding: 0 15px; /* Add horizontal padding to the main row */
+    }
+
+    .card {
+        width: 100%; /* Ensure cards take full width on very small screens */
+        margin: 0 0 2rem 0; /* Remove auto margin to prevent issues with padding */
+    }
+
+    .review-card {
+        margin-left: 0 !important; /* Remove left margin for review cards */
+        margin-right: 0 !important; /* Remove right margin for review cards */
+    }
+}
