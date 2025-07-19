@@ -43,4 +43,7 @@ const initDB = async () => {
   console.log("Data was initialized with new listings and admin user.");
 };
 
-initDB();
+initDB().then(() => {
+  mongoose.connection.close();
+  console.log("DB connection closed.");
+});
