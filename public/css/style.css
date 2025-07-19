@@ -48,6 +48,13 @@ body{
 .review-card{
     border: 0.5px solid black !important;
 }
+.review-comment-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 .card-img-top{
     border-radius: 1rem !important;
     width: 100% !important;
