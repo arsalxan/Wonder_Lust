@@ -19,7 +19,7 @@ router.get("/search", wrapAsync(listingController.searchListings));
 
 router.route("/:id")
     .get(wrapAsync(listingController.showListing))
-    .put(isLoggedIn, isOwner, validate(listingSchema), wrapAsync(listingController.updateListing))
+    .put(upload.single('listing[image]'),isLoggedIn, isOwner, validate(listingSchema), wrapAsync(listingController.updateListing))
     .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
 router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.renderEditForm));

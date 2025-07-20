@@ -50,18 +50,36 @@ module.exports.renderEditForm = async (req, res) => {
 };
 
 module.exports.updateListing = async (req, res) => {
-    let { id } = req.params;
-    let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    const { id } = req.params;
+    let listing = await Listing.findById(id);
+    if (!listing) {
+        req.flash('error', 'Listing not found');
+        return res.redirect('/listings');
+    }
+
+    // Update other listing properties, excluding 'image' if not provided
+    for (let key in req.body.listing) {
+        if (key === 'image' && req.body.listing[key] === '') {
+            continue; // Skip updating image if it's an empty string
+        }
+        listing[key] = req.body.listing[key];
+    }
+
+    if (req.file) {
+        listing.image = { url: req.file.path, filename: req.file.filename };
+    }
+
     if (req.body.listing.location) {
         const geometry = await geocodeLocation(req.body.listing.location);
         if (geometry) {
             listing.geometry = geometry;
-            await listing.save();
         }
     }
+    await listing.save();
     req.flash("success", "Listing Updated");
     res.redirect(`/listings/${id}`);
 };
+
 
 module.exports.destroyListing = async (req, res) => {
     let { id } = req.params;
